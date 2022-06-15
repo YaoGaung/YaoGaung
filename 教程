@@ -7,7 +7,7 @@
 
 
 
-//这是注释，下一段为 
+//这是注释，下一段为   免费教程QQ870667452
 var oarr=JSON.parse(localStorage.getItem("oarr"));
 	let oins=document.querySelectorAll(".answer");
 	for (let i = 0; i < oins.length; i++) {		
