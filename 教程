@@ -1,0 +1,46 @@
+	let oradios=document.querySelectorAll(".rightanswer");
+	let oarr=[];
+	for (let i = 0; i < oradios.length; i++) {
+		oarr.push(oradios[i].innerText);
+	}
+	localStorage.setItem("oarr",JSON.stringify(oarr));
+
+
+
+//这是注释，下一段为 
+var oarr=JSON.parse(localStorage.getItem("oarr"));
+	let oins=document.querySelectorAll(".answer");
+	for (let i = 0; i < oins.length; i++) {		
+		let oa=oarr[i];
+		//这是第一页的答案，如果是第二页，要从第n题开始，就把oarr[i]改为oarr[i+n-1]。比如，第二页是从第6题开始，那么，当我们点击下一页后，重新粘贴这段代码，然后吧let oa=oarr[i]改为let oa=oarr[i+6-1]，也就是let oa=oarr[i+5]
+		
+		for (let j = 0; j < oins[i].children.length; j++) {
+			let b1;
+		if(oins[i].children[j].outerText.toString().match(/^[a-zA-Z]/)!==null){
+		   b1=oins[i].children[j].outerText.toString().substring(2,oins[i].children[j].outerText.toString().length).trim();
+		  }else{
+			 b1=oins[i].children[j].outerText.toString().trim();
+		  } ;
+		  
+		  if(oa.indexOf(b1)!==-1){
+			 
+		   if(oins[i].children[j].children.length==2){
+			
+			  oins[i].children[j].children[0].checked=true;
+		   }
+		  if(oins[i].children[j].children.length==3){
+			   console.log("checkbox");
+		  	  oins[i].children[j].children[1].checked=true   
+		  }
+		  }
+		}
+		
+	}
+
+//下一段
+let oradios=document.querySelectorAll(".generalfeedback");
+	let obrr=[];
+	for (let i = 0; i < oradios.length; i++) {
+		obrr.push(oradios[i].innerText);
+	}
+	localStorage.setItem("obrr",JSON.stringify(obrr));
